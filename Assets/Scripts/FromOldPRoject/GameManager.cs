@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour {
     public float playerSpeed;
 
     public MapGenerator mapGenerator;
-    public EnemyGenerator enemyGenerator;
+    /*public EnemyGenerator enemyGenerator;
     public UIManager uiManager;
-    public SoundManager soundManager;
+    public SoundManager soundManager;*/
 
     public GameObject gameCamera;
     public float cameraSpeed;
@@ -52,20 +52,20 @@ public class GameManager : MonoBehaviour {
 
     private Camera cameraObject;
 
-    private GameStateEnum gameState;
+    //private GameStateEnum gameState;
 
     void Start () {
-        Time.timeScale = 0;
+        /*Time.timeScale = 0;
         gameState = GameStateEnum.Pause;
         uiManager.ShowMenu(uiManager.tutorialMenu);
         uiManager.HideMenu(uiManager.gameElements);
-        soundManager.SetStopFlag(true);
+        soundManager.SetStopFlag(true);*/
 
         cameraObject = gameCamera.GetComponent<Camera>();
 
-        enemyGenerator.SetCamera(cameraObject);
+        /*enemyGenerator.SetCamera(cameraObject);
         enemyGenerator.SetCameraRadius(Vector3.Distance(cameraObject.transform.position,
-            cameraObject.ScreenToWorldPoint(new Vector2(cameraObject.pixelWidth, cameraObject.pixelHeight))));
+            cameraObject.ScreenToWorldPoint(new Vector2(cameraObject.pixelWidth, cameraObject.pixelHeight))));*/
 
         zoneSize = mapGenerator.zonePrefab.GetComponent<BoxCollider2D>().size;
         zoneCenter = mapGenerator.zonePrefab.transform.position;
@@ -76,12 +76,12 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         CheckOtherActions();
 
-        if (!gameState.Equals(GameStateEnum.Play))
-            return;
+        /*if (!gameState.Equals(GameStateEnum.Play))
+            return;*/
 
         if (!CommonHandler.IsObjectInCamera(cameraObject, gameCamera.transform, player.transform.position))
         {
-            GameOver();
+           // GameOver();
         }
 
         //uiManager.CheckForBackLine(player.transform.position);
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
     {
         //AddCombo();
         AddScore(scoreForKill);
-        uiManager.ChangeKills(++killsCount);
+        //uiManager.ChangeKills(++killsCount);
     }
 
     bool CheckTap()
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameState.Equals(GameStateEnum.Pause))
+            /*if (gameState.Equals(GameStateEnum.Pause))
             {
                 Play();
             }
@@ -138,14 +138,14 @@ public class GameManager : MonoBehaviour {
             else if (gameState.Equals(GameStateEnum.GameOver))
             {
                 SceneManager.LoadScene("Menu");
-            }
+            }*/
         }
     }
 
     void AddScore(int value)
     {
         score += value;
-        uiManager.ChangeScore(score);
+        //uiManager.ChangeScore(score);
     }
 
     void CheckScore()
@@ -166,9 +166,9 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame()
     {
-        uiManager.tutorialMenu.menuObject.SetActive(false);
-        soundManager.SetStopFlag(false);
-        Play();
+        /*uiManager.tutorialMenu.menuObject.SetActive(false);
+        soundManager.SetStopFlag(false);*/
+        //Play();
     }
 
     public void Restart()
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("Up level");
 
-        player.shiftPower.y += upLevelProperties.playerShiftYDelta;
+        /*player.shiftPower.y += upLevelProperties.playerShiftYDelta;
 
         cameraSpeed += upLevelProperties.cameraSpeedDelta;
         scoreEarnTime -= upLevelProperties.scoreEarnTimeDelta;
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour {
 
         enemyGenerator.enemySpeedProperties += upLevelProperties.enemySpeedDelta;
         enemyGenerator.enemyMassProperties += upLevelProperties.enemyMassDelta;
-        player.enemyMass += upLevelProperties.enemyMassDelta;
+        player.enemyMass += upLevelProperties.enemyMassDelta;*/
 
         mapGenerator.zoneProperties.obstacleProbability += upLevelProperties.obstacleProbabilityDelta;
         mapGenerator.zoneProperties.obstacleRowProbability += upLevelProperties.obstacleRowProbabilityDelta;
@@ -230,13 +230,13 @@ public class GameManager : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(TagManager.GetTagNameByEnum(TagEnum.Zone)))
+        /*if (collision.CompareTag(TagManager.GetTagNameByEnum(TagEnum.Zone)))
         {
             mapGenerator.GenerateNextZone();
-        }
+        }*/
     }
 
-    void Play()
+    /*void Play()
     {
         uiManager.ChangeState(true);
         Time.timeScale = 1;
@@ -258,5 +258,5 @@ public class GameManager : MonoBehaviour {
         uiManager.ShowMenu(uiManager.gameOverMenu);
         soundManager.StopMusic();
         soundManager.PlayGameOver();
-    }
+    }*/
 }
