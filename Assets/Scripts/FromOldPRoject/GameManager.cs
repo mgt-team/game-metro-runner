@@ -203,8 +203,8 @@ public class GameManager : MonoBehaviour {
         enemyGenerator.enemyMassProperties += upLevelProperties.enemyMassDelta;
         player.enemyMass += upLevelProperties.enemyMassDelta;*/
 
-        mapGenerator.zoneProperties.obstacleProbability += upLevelProperties.obstacleProbabilityDelta;
-        mapGenerator.zoneProperties.obstacleRowProbability += upLevelProperties.obstacleRowProbabilityDelta;
+        /*mapGenerator.zoneProperties.obstacleProbability += upLevelProperties.obstacleProbabilityDelta;
+        mapGenerator.zoneProperties.obstacleRowProbability += upLevelProperties.obstacleRowProbabilityDelta;*/
     }
 
     // Move camera up with cameraSpeed

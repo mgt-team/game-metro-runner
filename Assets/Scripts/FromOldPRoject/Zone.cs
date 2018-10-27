@@ -2,22 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ZoneProperties
+{
+    public Sprite background = null;
+}
+
 public class Zone : MonoBehaviour {
+    private ZoneProperties m_zoneProperties;
     private SpriteRenderer spriteRenderer;
-    private Sprite background;
+
+    public void SetZoneProperties(ZoneProperties zoneProperties)
+    {
+        m_zoneProperties = zoneProperties;
+    }
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if(background != null)
-            spriteRenderer.sprite = background;
+        if (m_zoneProperties == null)
+            return;
+        GenerateEnvironment();
     }
 
-    public void SetBackground(Sprite background)
+    public void GenerateEnvironment()
     {
-        this.background = background;
+        GenerateBackground(m_zoneProperties.background);
     }
-    
-    
+
+    public void GenerateBackground(Sprite background)
+    {
+        spriteRenderer.sprite = background;
+    }
 }
