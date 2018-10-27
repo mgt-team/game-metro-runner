@@ -10,7 +10,7 @@ public class JoystickController : MoveController
     public override Vector2 GetVelocity()
     {
         if (_fingerOnTouch)
-            return Camera.main.WorldToScreenPoint(Input.GetTouch(0).position - _firstFingerPosition);
+            return (GetFingerPosition() - _firstFingerPosition).normalized;
         else
             return Vector2.zero;
     }
@@ -19,15 +19,17 @@ public class JoystickController : MoveController
     {
         if(Input.touchCount > 0)
         {
-            _firstFingerPosition = GetFirstFingerPosition();
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
+                _firstFingerPosition = GetFingerPosition();
+            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                 _fingerOnTouch = true;
-            else
+            else if (touch.phase == TouchPhase.Ended)
                 _fingerOnTouch = false;
         }
     }
 
-    private Vector2 GetFirstFingerPosition()
+    private Vector2 GetFingerPosition()
     {
         return Camera.main.WorldToScreenPoint(Input.GetTouch(0).position);
     }
