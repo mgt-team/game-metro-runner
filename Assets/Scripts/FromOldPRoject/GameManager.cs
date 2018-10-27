@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public Player player;
     public float playerSpeed;
 
-    public MapGenerator mapGenerator;
+    //public MapGenerator mapGenerator;
     /*public EnemyGenerator enemyGenerator;
     public UIManager uiManager;
     public SoundManager soundManager;*/
@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour {
         enemyGenerator.SetCameraRadius(Vector3.Distance(cameraObject.transform.position,
             cameraObject.ScreenToWorldPoint(new Vector2(cameraObject.pixelWidth, cameraObject.pixelHeight))));*/
 
-        zoneSize = mapGenerator.zonePrefab.GetComponent<BoxCollider2D>().size;
-        zoneCenter = mapGenerator.zonePrefab.transform.position;
+        /*zoneSize = mapGenerator.ZonePrefab.GetComponent<BoxCollider2D>().size;
+        zoneCenter = mapGenerator.ZonePrefab.transform.position;*/
 
         playerRadius = player.GetComponent<CircleCollider2D>().radius;
     }

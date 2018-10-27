@@ -17,9 +17,9 @@ public static class TagManager
             .Any(tag => tag.Equals(tagToCompare));
     }
 
-    public static bool CompareCollisionTag(Collision collision, TagEnum tagToCheck)
+    public static bool CompareGameObjectTag(GameObject gameObject, TagEnum tagToCheck)
     {
-        return collision.gameObject.CompareTag(GetTagNameByEnum(tagToCheck));
+        return gameObject.CompareTag(GetTagNameByEnum(tagToCheck));
     }
 }
 
