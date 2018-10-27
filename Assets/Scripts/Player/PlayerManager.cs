@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private MoveController _moveController;
+    
+    [SerializeField]
     private Player _player;
+    
+    private MoveController _moveController;
+    
+    private void Awake()
+    {
+        _moveController = GetComponent<MoveController>();
+    }
 
     // Use this for initialization
     void Start()
     {
+        
     }
 
     // Update is called once per frame
