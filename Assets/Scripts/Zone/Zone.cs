@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoneProperties
-{
-    public Sprite background = null;
-}
-
 public class Zone : MonoBehaviour {
     private ZoneProperties m_zoneProperties;
     private SpriteRenderer spriteRenderer;
