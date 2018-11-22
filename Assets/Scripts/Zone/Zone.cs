@@ -7,7 +7,10 @@ public class Zone : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private ZoneGrid _zoneGrid;
 
-    public List<Vector2> _positions;
+    private List<List<ZonePoint>> _zonePoints;
+
+    public int x;
+    public int y;
 
     public void SetZoneProperties(ZoneProperties zoneProperties)
     {
@@ -36,6 +39,16 @@ public class Zone : MonoBehaviour {
     private void GetGrid(Sprite background)
     {
         _zoneGrid = new ZoneGrid(background);
-        _positions = _zoneGrid.GetGrid(transform.position);
+        _zonePoints = _zoneGrid.GetGrid(transform.position, 10, 10);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.M) && m_zoneProperties != null)
+        {
+            _zoneGrid.GetVisualGrid(transform.position, 10, 10);
+            if (_zonePoints != null)
+                Debug.Log(_zonePoints[y][x].IsFree());              //Check for working of class ZonePoint
+        }       
     }
 }
