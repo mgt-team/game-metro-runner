@@ -8,20 +8,34 @@ public class Player: MonoBehaviour {
 	private Vector2 _shiftPower;	
 
 	private Rigidbody2D _rigidbody;
+    private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
 	private void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
 	}
 
 	// Use this for initialization
 	void Start () {
 		
 	}
+
+    public void StopAnimation()
+    {
+        _animator.SetBool("isRun", false);
+    }
+
+    public void StartAnimation()
+    {
+        _animator.SetBool("isRun", true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 	
 	public void SetVelocity(Vector2 direction)

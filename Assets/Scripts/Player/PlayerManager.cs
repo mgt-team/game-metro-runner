@@ -9,10 +9,12 @@ public class PlayerManager : MonoBehaviour
     private Player _player;
     
     private MoveController _moveController;
+    private Animator _animator;
     
     private void Awake()
     {
         _moveController = GetComponent<MoveController>();
+
     }
 
     // Use this for initialization
@@ -29,6 +31,11 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdatePlayerMovement()
     {
-        _player.SetVelocity(_moveController.GetVelocity());
+        Vector2 velocity = _moveController.GetVelocity();
+        _player.SetVelocity(velocity);
+        if (velocity == Vector2.zero)
+            _player.StopAnimation();
+        else
+            _player.StartAnimation();
     }
 }
