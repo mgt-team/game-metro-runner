@@ -56,4 +56,17 @@ public class Player: MonoBehaviour {
 		
 		_rigidbody.velocity = new Vector3(direction.x * _shiftPower.x, direction.y * shiftPowerY);
 	}
+
+    private void GetCoin(GameObject coin)
+    {
+        Destroy(coin);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == TagManager.GetTagNameByEnum(TagEnum.Coin))
+        {
+            GetCoin(collision.gameObject);
+        }
+    }
 }
