@@ -19,7 +19,7 @@ public class ZoneManager : MonoBehaviour {
     [SerializeField]
     private int _zoneCountOnStart;
     
-    private List<Zone> _zoneList;
+    private List<Zone> _zoneList;    
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class ZoneManager : MonoBehaviour {
         }
         else
         {
-            if (_zoneList.Count > _zoneOnSceneCount)
+            if (_zoneList.Count > _zoneOnSceneCount)                                //Необходимо добавить проверку на камеру
             {
                 Destroy(_zoneList[0].gameObject);
                 _zoneList.RemoveAt(0);
@@ -78,5 +78,4 @@ public class ZoneManager : MonoBehaviour {
         
         return zoneProperties;
     }
-
 }
