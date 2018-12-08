@@ -29,6 +29,11 @@ public class ZonePoint : MonoBehaviour{
         }
     }
 
+    public Vector2 GetPointPosition()
+    {
+        return _selfPosition;
+    }
+
     public bool IsFree()
     {
         return _isFree;

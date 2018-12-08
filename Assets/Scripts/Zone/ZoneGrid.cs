@@ -39,13 +39,17 @@ public class ZoneGrid : MonoBehaviour {
     {
         float x = (xMax - xMin) / horizontalPointCount;
         float y = (yMax - yMin) / verticalPointCount;
-        for(int i = 1; i < 10; i++)
+        for(int i = 1; i < horizontalPointCount; i++)
         {
             Vector2 end = new Vector2 (i * x - xMax/2 + backgroundPos.x, yMin - yMax / 2  + backgroundPos.y);                  //Этот метод строит сетку в редакторе
             Vector2 start = new Vector2(i * x - xMax/2 + backgroundPos.x, yMax - yMax / 2 + backgroundPos.y);
             Debug.DrawLine(start, end, Color.yellow, .5f);
-            end = new Vector2(xMin - xMax/2 + backgroundPos.x, y * i - yMax/2 + backgroundPos.y);
-            start = new Vector2(xMax - xMax/2 + backgroundPos.x, y * i - yMax/2 + backgroundPos.y);
+        }
+
+        for(int i = 1; i < verticalPointCount; i++)
+        {
+            Vector2 end = new Vector2(xMin - xMax / 2 + backgroundPos.x, y * i - yMax / 2 + backgroundPos.y);
+            Vector2 start = new Vector2(xMax - xMax / 2 + backgroundPos.x, y * i - yMax / 2 + backgroundPos.y);
             Debug.DrawLine(start, end, Color.yellow, .5f);
         }
     }

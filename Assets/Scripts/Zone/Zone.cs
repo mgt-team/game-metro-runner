@@ -9,8 +9,11 @@ public class Zone : MonoBehaviour {
 
     private List<List<ZonePoint>> _zonePoints;
 
-    public int x;
-    public int y;
+    [SerializeField]
+    private int _rows;
+
+    [SerializeField]
+    private int _coloms;
 
     public void SetZoneProperties(ZoneProperties zoneProperties)
     {
@@ -39,16 +42,16 @@ public class Zone : MonoBehaviour {
     private void GetGrid(Sprite background)
     {
         _zoneGrid = new ZoneGrid(background);
-        _zonePoints = _zoneGrid.GetGrid(transform.position, 10, 10);
+        _zonePoints = _zoneGrid.GetGrid(transform.position, _coloms, _rows);
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.M) && m_zoneProperties != null)
+        if (Input.GetKey(KeyCode.M))
         {
-            _zoneGrid.GetVisualGrid(transform.position, 10, 10);
+            _zoneGrid.GetVisualGrid(transform.position, _coloms, _rows);
             if (_zonePoints != null)
-                Debug.Log(_zonePoints[y][x].IsFree());              //Check for working of class ZonePoint
+                Debug.Log(_zonePoints[3][3].GetPointPosition());              //Check for working of class ZonePoint
         }       
     }
 }

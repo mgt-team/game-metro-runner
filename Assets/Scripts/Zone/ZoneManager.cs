@@ -18,6 +18,9 @@ public class ZoneManager : MonoBehaviour {
     private int _zoneOnSceneCount;
     [SerializeField]
     private int _zoneCountOnStart;
+
+    public Zone _currentZone;
+    public Zone _newZone;
     
     private List<Zone> _zoneList;    
 
@@ -55,6 +58,8 @@ public class ZoneManager : MonoBehaviour {
             if (_zoneList.Count > 0)
             {
                 InstantiateNextZone(_zonePrefab, _zoneList[_zoneList.Count - 1].transform.position);
+                _newZone = _zoneList[_zoneList.Count - 1];
+                _currentZone = _zoneList[_zoneList.Count - 2];
             } 
             else
             {
