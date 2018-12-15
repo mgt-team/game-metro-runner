@@ -11,6 +11,8 @@ public class Player: MonoBehaviour {
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
 
+    public float _forcePower;
+
 	private void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody2D>();
@@ -35,26 +37,23 @@ public class Player: MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+            Force();
 	}
+
+    public void Force()
+    {
+        //Эти два метода работают
+        //_rigidbody.velocity *= _forcePower;       
+        //_rigidbody.AddForce(Vector2.up * _forcePower);                
+    }
 	
 	public void SetVelocity(Vector2 direction)
 	{
-		if (direction.x != 0 || direction.y != 0)
+		if (direction.x != 0 && direction.y != 0)
 			direction *= Mathf.Sqrt(2) / 2;
-
-		var shiftPowerY = _shiftPower.y;
-
-		if(direction.y < 0)
-		{
-			shiftPowerY *= 2;
-		}
-		else
-		{
-			shiftPowerY *= 1.5f;
-		}
 		
-		_rigidbody.velocity = new Vector3(direction.x * _shiftPower.x, direction.y * shiftPowerY);
+		_rigidbody.velocity = new Vector2(direction.x * _shiftPower.x, direction.y * _shiftPower.y);
 	}
 
     private void GetCoin(GameObject coin)
