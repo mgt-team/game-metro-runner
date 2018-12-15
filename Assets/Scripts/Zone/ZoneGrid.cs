@@ -14,11 +14,11 @@ public class ZoneGrid : MonoBehaviour {
 
     public ZoneGrid (Sprite background, Vector2 zonePosition, int horizontalPointCount, int verticalPointCount)
     {
-        xMax = background.rect.xMax / 60;
-        xMin = background.rect.xMin / 60;
+        xMax = background.rect.xMax / background.pixelsPerUnit;
+        xMin = background.rect.xMin / background.pixelsPerUnit;
 
-        yMax = background.rect.yMax / 60;
-        yMin = background.rect.yMin / 60;
+        yMax = background.rect.yMax / background.pixelsPerUnit;
+        yMin = background.rect.yMin / background.pixelsPerUnit;
 
         _zonePoints = GetGrid(zonePosition, horizontalPointCount, verticalPointCount);
     }
