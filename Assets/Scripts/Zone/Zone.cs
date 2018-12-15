@@ -7,8 +7,6 @@ public class Zone : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private ZoneGrid _zoneGrid;
 
-    private List<List<ZonePoint>> _zonePoints;
-
     [SerializeField]
     private int _rows;
 
@@ -26,7 +24,7 @@ public class Zone : MonoBehaviour {
         if (m_zoneProperties == null)
             return;
         GenerateEnvironment();
-        GetGrid(m_zoneProperties.background);
+        InitGrid(m_zoneProperties.background);
     }
 
     public void GenerateEnvironment()
@@ -39,19 +37,13 @@ public class Zone : MonoBehaviour {
         spriteRenderer.sprite = background;
     }
 
-    private void GetGrid(Sprite background)
+    private void InitGrid(Sprite background)
     {
-        _zoneGrid = new ZoneGrid(background);
-        _zonePoints = _zoneGrid.GetGrid(transform.position, _coloms, _rows);
+        _zoneGrid = new ZoneGrid(background, gameObject.transform.position, _coloms, _rows);
     }
 
-    private void Update()
+    public ZoneGrid GetGrid()
     {
-        if (Input.GetKey(KeyCode.M))
-        {
-            _zoneGrid.GetVisualGrid(transform.position, _coloms, _rows);
-            if (_zonePoints != null)
-                Debug.Log(_zonePoints[3][3].GetPointPosition());              //Check for working of class ZonePoint
-        }       
+        return _zoneGrid;
     }
 }

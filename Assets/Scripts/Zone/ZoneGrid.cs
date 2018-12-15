@@ -10,13 +10,17 @@ public class ZoneGrid : MonoBehaviour {
     public float yMax;
     public float yMin;
 
-    public ZoneGrid (Sprite background)
+    private List<List<ZonePoint>> _zonePoints;
+
+    public ZoneGrid (Sprite background, Vector2 zonePosition, int horizontalPointCount, int verticalPointCount)
     {
         xMax = background.rect.xMax / 60;
         xMin = background.rect.xMin / 60;
 
         yMax = background.rect.yMax / 60;
         yMin = background.rect.yMin / 60;
+
+        _zonePoints = GetGrid(zonePosition, horizontalPointCount, verticalPointCount);
     }
 
     public List<List<ZonePoint>> GetGrid(Vector2 zonePosition, int horizontalPointCount, int verticalPointCount)
