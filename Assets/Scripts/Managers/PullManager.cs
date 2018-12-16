@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PullManager : MonoBehaviour {
+public class PullManager : Singleton<PullManager> {
 
     [SerializeField] private Pull _coinPull;
-    [SerializeField] private Pull _NPCPull;
+    [SerializeField] private Pull _npcPull;
 
     public Pull CoinPull
     {
@@ -15,11 +13,11 @@ public class PullManager : MonoBehaviour {
         }
     }
 
-    public Pull NPCPull
+    public Pull NpcPull
     {
         get
         {
-            return _NPCPull;
+            return _npcPull;
         }
     }
 }
