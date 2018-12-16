@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ZonePoint : MonoBehaviour{
+public class ZonePoint {
 
     private Vector2 _selfPosition;
     private bool _isFree;
@@ -11,31 +12,32 @@ public class ZonePoint : MonoBehaviour{
     public ZonePoint(Vector2 position)
     {
         _selfPosition = position;
-        _isFree = true;
+        IsFree = true;
+    }
+
+    public bool IsFree
+    {
+        get { return _isFree; }
+        set { _isFree = value; }
     }
 
     public void AddElement(GameObject element)
     {
-        _activeObject = Instantiate(element, _selfPosition, Quaternion.identity);
-        _isFree = false;
+        _activeObject = element;
+        IsFree = false;
     }
 
     public void DeleteElement()
     {
-        if (!IsFree())
+        if (!IsFree)
         {
-            Destroy(_activeObject);
-            _activeObject = new GameObject();
+            _activeObject = null;
+            IsFree = true;
         }
     }
 
     public Vector2 GetPointPosition()
     {
         return _selfPosition;
-    }
-
-    public bool IsFree()
-    {
-        return _isFree;
     }
 }

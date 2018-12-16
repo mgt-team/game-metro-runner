@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Zone : MonoBehaviour {
     private ZoneProperties m_zoneProperties;
@@ -10,8 +11,8 @@ public class Zone : MonoBehaviour {
     [SerializeField]
     private int _rows;
 
-    [SerializeField]
-    private int _coloms;
+    [FormerlySerializedAs("_colums")] [FormerlySerializedAs("_coloms")] [SerializeField]
+    private int _columns;
 
     public void SetZoneProperties(ZoneProperties zoneProperties)
     {
@@ -39,7 +40,7 @@ public class Zone : MonoBehaviour {
 
     private void InitGrid(Sprite background)
     {
-        _zoneGrid = new ZoneGrid(background, gameObject.transform.position, _coloms, _rows);
+        _zoneGrid = new ZoneGrid(background, gameObject.transform.position, _columns, _rows);
     }
 
     public ZoneGrid GetGrid()

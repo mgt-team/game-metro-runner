@@ -20,8 +20,10 @@ public class ZoneGrid
         _rowCount = rowCount;
         _columnCount = columnCount;
         
-        _minCoordinate = new Vector2(background.rect.xMin / 60, background.rect.yMin / 60);
-        _maxCoordinate = new Vector2(background.rect.xMax / 60, background.rect.yMax / 60);
+        _minCoordinate = new Vector2(background.rect.xMin / background.pixelsPerUnit,
+            background.rect.yMin / background.pixelsPerUnit);
+        _maxCoordinate = new Vector2(background.rect.xMax / background.pixelsPerUnit,
+            background.rect.yMax / background.pixelsPerUnit);
 
         _rowDistanceBetweenPoints = (_maxCoordinate.x - _minCoordinate.x) / rowCount;
         _columnDistanceBetweenPoints = (_maxCoordinate.y - _minCoordinate.y) / columnCount;
