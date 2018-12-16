@@ -2,5 +2,7 @@
 {
     Player, 
     Zone,
-    Coin
+    Coin,
+    CoinsContainer,
+    NPCsContainer
 }
