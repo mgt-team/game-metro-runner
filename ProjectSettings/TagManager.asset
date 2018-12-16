@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Zone
   - Coin
+  - CoinsContainer
+  - NPCsContainer
+  - CoinPool
+  - NpcPool
   layers:
   - Default
   - TransparentFX

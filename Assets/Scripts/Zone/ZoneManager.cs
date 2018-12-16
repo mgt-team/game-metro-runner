@@ -70,7 +70,7 @@ public class ZoneManager : MonoBehaviour {
 
     private void InstantiateNextZone(Zone nextZone, Vector2 previousZonePosition)
     {
-        Zone zoneInstance = Instantiate(nextZone, previousZonePosition + Vector2.up * _zonesDistance, Quaternion.identity);
+        var zoneInstance = Instantiate(nextZone, previousZonePosition + Vector2.up * _zonesDistance, Quaternion.identity);
         zoneInstance.transform.parent = _zonesContainer.transform;
         _zoneList.Add(zoneInstance);
         zoneInstance.SetZoneProperties(GenerateProperties());

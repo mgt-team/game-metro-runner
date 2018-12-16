@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rows: 10
-  _coloms: 5
+  _columns: 10
 --- !u!212 &212456035831632696
 SpriteRenderer:
   m_ObjectHideFlags: 1

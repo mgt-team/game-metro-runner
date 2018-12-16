@@ -5,8 +5,7 @@ using UnityEngine.Serialization;
 
 public class ZonePoint {
 
-    private Vector2 _selfPosition;
-    private bool _isFree;
+    private readonly Vector2 _selfPosition;
     private GameObject _activeObject;
 
     public ZonePoint(Vector2 position)
@@ -15,11 +14,7 @@ public class ZonePoint {
         IsFree = true;
     }
 
-    public bool IsFree
-    {
-        get { return _isFree; }
-        set { _isFree = value; }
-    }
+    public bool IsFree { get; set; }
 
     public void AddElement(GameObject element)
     {

@@ -4,5 +4,7 @@
     Zone,
     Coin,
     CoinsContainer,
-    NPCsContainer
+    NPCsContainer,
+    CoinPool,
+    NpcPool
 }

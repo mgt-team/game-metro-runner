@@ -50,10 +50,10 @@ public class ZoneGrid
     {
         List<List<ZonePoint>> zonePoints = new List<List<ZonePoint>>();               //List of List verticalZonePoints
         
-        for (int i = 1; i < columnCount; i++)
+        for (int i = 1; i <= columnCount; i++)
         {
             List<ZonePoint> currentRowPoints = new List<ZonePoint>();
-            for (int j = 1; j < rowCount; j++)
+            for (int j = 1; j <= rowCount; j++)
                 currentRowPoints.Add(new ZonePoint(
                     new Vector2(_rowDistanceBetweenPoints * j + (zonePosition.x - _maxCoordinate.x / 2),
                         _columnDistanceBetweenPoints * i + (zonePosition.y - _maxCoordinate.y / 2))));

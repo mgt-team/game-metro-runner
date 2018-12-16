@@ -27,12 +27,12 @@ public class Player: MonoBehaviour {
 
     public void StopAnimation()
     {
-        _animator.SetBool("isRun", false);
+        //_animator.SetBool("isRun", false);
     }
 
     public void StartAnimation()
     {
-        _animator.SetBool("isRun", true);
+        //_animator.SetBool("isRun", true);
     }
 	
 	// Update is called once per frame

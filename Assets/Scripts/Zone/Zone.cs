@@ -4,38 +4,39 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Zone : MonoBehaviour {
-    private ZoneProperties m_zoneProperties;
-    private SpriteRenderer spriteRenderer;
+    private ZoneProperties _zoneProperties;
+    private SpriteRenderer _spriteRenderer;
     private ZoneGrid _zoneGrid;
 
     [SerializeField]
     private int _rows;
 
-    [FormerlySerializedAs("_colums")] [FormerlySerializedAs("_coloms")] [SerializeField]
+    [SerializeField]
     private int _columns;
 
     public void SetZoneProperties(ZoneProperties zoneProperties)
     {
-        m_zoneProperties = zoneProperties;
+        _zoneProperties = zoneProperties;
     }
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (m_zoneProperties == null)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_zoneProperties == null)
             return;
+        InitGrid(_zoneProperties.background);
         GenerateEnvironment();
-        InitGrid(m_zoneProperties.background);
     }
 
     public void GenerateEnvironment()
     {
-        GenerateBackground(m_zoneProperties.background);
+        GenerateBackground(_zoneProperties.background);
+        ZoneObjectsGenerator.Instance.GenerateOnGrid(_zoneGrid);
     }
 
     public void GenerateBackground(Sprite background)
     {
-        spriteRenderer.sprite = background;
+        _spriteRenderer.sprite = background;
     }
 
     private void InitGrid(Sprite background)
