@@ -6,5 +6,6 @@
     CoinsContainer,
     NPCsContainer,
     CoinPool,
-    NpcPool
+    NpcPool,
+    ZonePool
 }

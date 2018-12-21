@@ -11,15 +11,20 @@ public class Pool : MonoBehaviour
     
     public GameObject GetObject(Vector2 position)
     {
+
+        GameObject objectFromPool;
         if (_objects.Count == 0)
         {
-            InstantiateNewObject();
+             objectFromPool = InstantiateNewObject();
+        }
+        else
+        {
+            objectFromPool = _objects[_objects.Count - 1];
+            _objects.Remove(objectFromPool);
         }
         
-        var lastObject = _objects[_objects.Count - 1];
-        _objects.Remove(lastObject);
-        lastObject.transform.position = position;
-        return lastObject;
+        objectFromPool.transform.position = position;
+        return objectFromPool;
     }
 
     public void ReturnObject(GameObject returnedObject)
@@ -29,11 +34,11 @@ public class Pool : MonoBehaviour
         _objects.Add(returnedObject);
     }
 
-    private void InstantiateNewObject()
+    private GameObject InstantiateNewObject()
     {
         var newObject = Instantiate(_objectPrefab, gameObject.transform);
         newObject.SetActive(false);
-        _objects.Add(newObject);
         newObject.transform.parent = gameObject.transform;
+        return newObject;
     }
 }
