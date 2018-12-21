@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class ZoneManager : MonoBehaviour {
@@ -10,8 +11,6 @@ public class ZoneManager : MonoBehaviour {
     private float _zonesDistance;
     [SerializeField] 
     private GameObject _zonesContainer;
-    [SerializeField] 
-    private Zone _zonePrefab;
     [SerializeField]
     private Zone _startZone;
     [SerializeField] 
@@ -19,8 +18,11 @@ public class ZoneManager : MonoBehaviour {
     [SerializeField]
     private int _zoneCountOnStart;
 
-    public Zone _currentZone;
-    public Zone _newZone;
+    [ReadOnly, SerializeField]
+    private Zone _currentZone;
+    
+    [ReadOnly, SerializeField]
+    private Zone _newZone;
     
     private List<Zone> _zoneList;    
 
@@ -38,8 +40,7 @@ public class ZoneManager : MonoBehaviour {
         {
             if (_startZone != null)
             {
-                _zoneList = new List<Zone>();
-                _zoneList.Add(_startZone);
+                _zoneList = new List<Zone> {_startZone};
                 GenerateNextZone();
             }
             else
@@ -49,15 +50,15 @@ public class ZoneManager : MonoBehaviour {
         }
         else
         {
-            if (_zoneList.Count > _zoneOnSceneCount)                                //Необходимо добавить проверку на камеру
+            if (_zoneList.Count > _zoneOnSceneCount)
             {
-                Destroy(_zoneList[0].gameObject);
+                PoolManager.Instance.ZonePool.ReturnObject(_zoneList[0].gameObject);
                 _zoneList.RemoveAt(0);
             }
 
             if (_zoneList.Count > 0)
             {
-                InstantiateNextZone(_zonePrefab, _zoneList[_zoneList.Count - 1].transform.position);
+                InstantiateNextZone(_zoneList[_zoneList.Count - 1].transform.position);
                 _newZone = _zoneList[_zoneList.Count - 1];
                 _currentZone = _zoneList[_zoneList.Count - 2];
             } 
@@ -68,10 +69,12 @@ public class ZoneManager : MonoBehaviour {
         }
     }
 
-    private void InstantiateNextZone(Zone nextZone, Vector2 previousZonePosition)
+    private void InstantiateNextZone(Vector2 previousZonePosition)
     {
-        var zoneInstance = Instantiate(nextZone, previousZonePosition + Vector2.up * _zonesDistance, Quaternion.identity);
+        var zoneInstance = PoolManager.Instance.ZonePool.GetObject(
+            previousZonePosition + Vector2.up * _zonesDistance).GetComponent<Zone>();
         zoneInstance.transform.parent = _zonesContainer.transform;
+        zoneInstance.gameObject.SetActive(true);
         _zoneList.Add(zoneInstance);
         zoneInstance.SetZoneProperties(GenerateProperties());
     }
