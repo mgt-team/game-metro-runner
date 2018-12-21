@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4563053178816378}
   - component: {fileID: 114982131888714292}
+  - component: {fileID: 58789343082429736}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -37,7 +38,6 @@ GameObject:
   - component: {fileID: 4914770543176088}
   - component: {fileID: 95515935893754500}
   - component: {fileID: 212383037085216356}
-  - component: {fileID: 58096405708554208}
   m_Layer: 0
   m_Name: CoinAnimator
   m_TagString: Coin
@@ -72,16 +72,16 @@ Transform:
   m_Father: {fileID: 4563053178816378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58096405708554208
+--- !u!58 &58789343082429736
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1634118379529444}
+  m_GameObject: {fileID: 1008607923393176}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
