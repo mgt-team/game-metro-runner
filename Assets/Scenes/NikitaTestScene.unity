@@ -171,6 +171,11 @@ Prefab:
       propertyPath: _objectsCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114684630688413430, guid: df6ae198bbdcdd846bd17fe000f15a2a,
+        type: 2}
+      propertyPath: _coinGenerateOnRowProbability
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6ae198bbdcdd846bd17fe000f15a2a, type: 2}
   m_IsPrefabAsset: 0
