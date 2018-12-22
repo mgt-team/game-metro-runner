@@ -14,13 +14,8 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         _moveController = GetComponent<MoveController>();
+        _player = GameObject.FindGameObjectWithTag(TagManager.GetTagNameByEnum(TagEnum.Player)).GetComponent<Player>();
 
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

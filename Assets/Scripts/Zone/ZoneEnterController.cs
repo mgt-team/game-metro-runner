@@ -7,7 +7,12 @@ public class ZoneEnterController : MonoBehaviour
 	[SerializeField]
 	private ZoneManager _zoneManager;
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
+    {
+        _zoneManager = GameObject.FindGameObjectWithTag(TagManager.GetTagNameByEnum(TagEnum.ZoneManager)).GetComponent<ZoneManager>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (TagManager.CompareGameObjectTag(collision.gameObject, TagEnum.Zone))
 		{
