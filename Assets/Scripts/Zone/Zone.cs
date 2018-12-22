@@ -55,4 +55,10 @@ public class Zone : MonoBehaviour {
     {
         return _zoneGrid;
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.M))
+            _zoneGrid.GetVisualGrid(transform.position, _rows, _columns);
+    }
 }
