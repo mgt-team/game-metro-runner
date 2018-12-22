@@ -162,7 +162,7 @@ Prefab:
         type: 2}
       propertyPath: _zoneManager
       value: 
-      objectReference: {fileID: 1731271762}
+      objectReference: {fileID: 0}
     - target: {fileID: 20087392879622642, guid: c0b0c465d5d68b54bb0a91c487e93484,
         type: 2}
       propertyPath: m_BackGroundColor.r
@@ -277,6 +277,20 @@ Prefab:
       propertyPath: _startZone
       value: 
       objectReference: {fileID: 330663833}
+    - target: {fileID: 114988006959906932, guid: df6ae198bbdcdd846bd17fe000f15a2a,
+        type: 2}
+      propertyPath: _startZone
+      value: 
+      objectReference: {fileID: 330663833}
+    - target: {fileID: 114282666352953250, guid: df6ae198bbdcdd846bd17fe000f15a2a,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1426476206}
+    - target: {fileID: 1287498268469692, guid: df6ae198bbdcdd846bd17fe000f15a2a, type: 2}
+      propertyPath: m_TagString
+      value: ZoneManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6ae198bbdcdd846bd17fe000f15a2a, type: 2}
   m_IsPrefabAsset: 0
@@ -362,6 +376,10 @@ Prefab:
       propertyPath: y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1884031349453590, guid: 4f0803e4aa0392a47b66c686d6e81942, type: 2}
+      propertyPath: m_Name
+      value: StartZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f0803e4aa0392a47b66c686d6e81942, type: 2}
   m_IsPrefabAsset: 0
@@ -371,9 +389,3 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 698772880}
   m_Script: {fileID: 11500000, guid: 6bf8373194c348d4db16a63b70e0ef99, type: 3}
---- !u!114 &1731271762 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114687510327918756, guid: df6ae198bbdcdd846bd17fe000f15a2a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1095451065}
-  m_Script: {fileID: 11500000, guid: 21ef560ad41a40747bab0e6ba5837a20, type: 3}
