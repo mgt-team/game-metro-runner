@@ -48,7 +48,7 @@ public class Zone : MonoBehaviour {
 
     private void InitGrid(Sprite background)
     {
-        _zoneGrid = new ZoneGrid(background, gameObject.transform.position, _columns, _rows);
+        _zoneGrid = new ZoneGrid(background, gameObject.transform.position, _rows, _columns);
     }
 
     public ZoneGrid GetGrid()
