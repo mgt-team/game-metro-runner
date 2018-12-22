@@ -19,11 +19,18 @@ public class Zone : MonoBehaviour {
         _zoneProperties = zoneProperties;
     }
 
-    void Start()
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void InitZone()
+    {
         if (_zoneProperties == null)
+        {
             return;
+        }
+        
         InitGrid(_zoneProperties.background);
         GenerateEnvironment();
     }

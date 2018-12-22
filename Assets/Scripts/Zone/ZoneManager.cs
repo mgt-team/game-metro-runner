@@ -77,6 +77,7 @@ public class ZoneManager : MonoBehaviour {
         zoneInstance.gameObject.SetActive(true);
         _zoneList.Add(zoneInstance);
         zoneInstance.SetZoneProperties(GenerateProperties());
+        zoneInstance.InitZone();
     }
 
     private ZoneProperties GenerateProperties()
