@@ -70,17 +70,17 @@ public class ZoneGrid
     {
         var offsetVector = new Vector2(-_maxCoordinate.x / 2 + backgroundPos.x,
             -_maxCoordinate.y / 2 + backgroundPos.y);
-        for(var i = 1; i < rowCount; i++)
+        for(var i = 1; i < columnCount; i++)
         {
-            var xCoordinate = i * _rowDistanceBetweenPoints + offsetVector.x;
+            var xCoordinate = i * _columnDistanceBetweenPoints + offsetVector.x;
             var end = new Vector2 (xCoordinate, _minCoordinate.y + offsetVector.y);
             var start = new Vector2(xCoordinate, _maxCoordinate.y + offsetVector.y);
             Debug.DrawLine(start, end, Color.yellow, .5f);
         }
 
-        for(var i = 1; i < columnCount; i++)
+        for(var i = 1; i < rowCount; i++)
         {
-            var yCoordinate = _columnDistanceBetweenPoints * i + offsetVector.y;
+            var yCoordinate = _rowDistanceBetweenPoints * i + offsetVector.y;
             var end = new Vector2(_minCoordinate.x + offsetVector.x, yCoordinate);
             var start = new Vector2(_maxCoordinate.x + offsetVector.x, yCoordinate);
             Debug.DrawLine(start, end, Color.yellow, .5f);
