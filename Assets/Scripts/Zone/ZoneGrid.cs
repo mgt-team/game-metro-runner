@@ -25,8 +25,8 @@ public class ZoneGrid
         _maxCoordinate = new Vector2(background.rect.xMax / background.pixelsPerUnit,
             background.rect.yMax / background.pixelsPerUnit);
 
-        _rowDistanceBetweenPoints = (_maxCoordinate.x - _minCoordinate.x) / rowCount;
-        _columnDistanceBetweenPoints = (_maxCoordinate.y - _minCoordinate.y) / columnCount;
+        _rowDistanceBetweenPoints = (_maxCoordinate.y - _minCoordinate.y) / rowCount;
+        _columnDistanceBetweenPoints = (_maxCoordinate.x - _minCoordinate.x) / columnCount;
 
         _zonePoints = GetGrid(zonePosition, rowCount, columnCount);
     }
@@ -48,15 +48,15 @@ public class ZoneGrid
 
     private List<List<ZonePoint>> GetGrid(Vector2 zonePosition, int rowCount, int columnCount)
     {
-        List<List<ZonePoint>> zonePoints = new List<List<ZonePoint>>();               //List of List verticalZonePoints
+        var zonePoints = new List<List<ZonePoint>>();               //List of List verticalZonePoints
         
-        for (int i = 1; i <= rowCount; i++)
+        for (var i = 1; i <= rowCount; i++)
         {
-            List<ZonePoint> currentRowPoints = new List<ZonePoint>();
-            for (int j = 1; j <= columnCount; j++)
+            var currentRowPoints = new List<ZonePoint>();
+            for (var j = 1; j <= columnCount; j++)
                 currentRowPoints.Add(new ZonePoint(
-                    new Vector2(_rowDistanceBetweenPoints * j + (zonePosition.x - _maxCoordinate.x / 2),
-                        _columnDistanceBetweenPoints * i + (zonePosition.y - _maxCoordinate.y / 2))));
+                    new Vector2(_columnDistanceBetweenPoints * j + (zonePosition.x - _maxCoordinate.x / 2),
+                        _rowDistanceBetweenPoints * i + (zonePosition.y - _maxCoordinate.y / 2))));
             zonePoints.Add(currentRowPoints);
         }
         return zonePoints;
