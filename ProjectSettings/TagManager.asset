@@ -12,6 +12,7 @@ TagManager:
   - NpcPool
   - ZonePool
   - ZoneContainer
+  - ZoneManager
   layers:
   - Default
   - TransparentFX
