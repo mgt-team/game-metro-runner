@@ -70,6 +70,8 @@ public class ZoneGrid
     {
         var offsetVector = new Vector2(-_maxCoordinate.x / 2 + backgroundPos.x,
             -_maxCoordinate.y / 2 + backgroundPos.y);
+        
+        // Draw all columns
         for(var i = 1; i < columnCount; i++)
         {
             var xCoordinate = i * _columnDistanceBetweenPoints + offsetVector.x;
@@ -78,6 +80,7 @@ public class ZoneGrid
             Debug.DrawLine(start, end, Color.yellow, .5f);
         }
 
+        // Draw all rows
         for(var i = 1; i < rowCount; i++)
         {
             var yCoordinate = _rowDistanceBetweenPoints * i + offsetVector.y;
