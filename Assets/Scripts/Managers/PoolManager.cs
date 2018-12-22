@@ -7,9 +7,12 @@ public class PoolManager : Singleton<PoolManager> {
 
     private void Awake()
     {
-        CoinPool = FindPoolByTag(TagEnum.CoinPool);   
+        CoinPool = FindPoolByTag(TagEnum.CoinPool);
+        CoinPool.Init();
         NpcPool = FindPoolByTag(TagEnum.NpcPool);
+        NpcPool.Init();
         ZonePool = FindPoolByTag(TagEnum.ZonePool);
+        ZonePool.Init();
     }
 
     private static Pool FindPoolByTag(TagEnum tagEnum)

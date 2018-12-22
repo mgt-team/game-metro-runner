@@ -6,8 +6,20 @@ public class Pool : MonoBehaviour
 {
 
     private readonly List<GameObject> _objects = new List<GameObject>();
-
+    
+    [SerializeField] private int _objectsCount;
     [SerializeField] private GameObject _objectPrefab;
+
+    public void Init()
+    {
+        for(int i = 0; i < _objectsCount; i++)
+        {
+            var newObject = Instantiate(_objectPrefab, gameObject.transform);
+            newObject.SetActive(false);
+            _objects.Add(newObject);
+            newObject.transform.parent = gameObject.transform;
+        }
+    }
     
     public GameObject GetObject(Vector2 position)
     {
