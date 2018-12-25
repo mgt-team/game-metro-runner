@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class TagManager
+public static class TagUtils
 {
 
     public static string GetTagNameByEnum<T>(T value)
