@@ -1,24 +1,25 @@
 ﻿using UnityEngine;
 
 public class PoolManager : Singleton<PoolManager> {
-    public Pool CoinPool { get; private set; }
+    
+	public Pool CoinPool { get; private set; }
     public Pool NpcPool { get; private set; }
     public Pool ZonePool { get; private set; }
 
     private void Awake()
     {
-        CoinPool = FindPoolByTag(TagEnum.CoinPool);
-        CoinPool.Init();
-        NpcPool = FindPoolByTag(TagEnum.NpcPool);
-        NpcPool.Init();
-        ZonePool = FindPoolByTag(TagEnum.ZonePool);
-        ZonePool.Init();
+        // Initialize all your pools
+        CoinPool = InitPool(TagEnum.CoinPool);
+        NpcPool = InitPool(TagEnum.NpcPool);
+        ZonePool = InitPool(TagEnum.ZonePool);
     }
 
-    private static Pool FindPoolByTag(TagEnum tagEnum)
+    private static Pool InitPool(TagEnum tagEnum)
     {
-        return GameObject             
+        var pool = GameObject             
             .FindGameObjectWithTag(TagManager.GetTagNameByEnum(tagEnum))
             .GetComponent<Pool>();
+        pool.Init();
+        return pool;
     }
 }
